@@ -1,3 +1,35 @@
 body {
   margin: 0;
 }
+
+.main-cover { 
+  width: 360px;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+  position: relative;
+}
+
+.border {
+  border: 1px solid red;
+}
+
+.start-button {
+  width: 40%;
+  height: 10%;
+
+  background-color: black;
+  border-radius: 10px;
+  margin: 0 auto;
+
+  position: absolute;
+  bottom: 20%;
+}
+@media (min-width: 768px) { /* Adjust min-width as needed */
+  .main-cover {
+    width: 30%;
+  }
+}
