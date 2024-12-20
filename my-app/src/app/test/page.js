@@ -2,8 +2,8 @@ import React from 'react'
 
 function page() {
   return (
-    <div>
-        this is homes
+    <div className="main-cover border">
+      안녕하세요~
     </div>
   )
 }
