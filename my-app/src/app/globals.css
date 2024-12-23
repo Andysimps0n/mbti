@@ -3,8 +3,16 @@ body {
   user-select: none;
 }
 
+.maslow {
+  background-image: url('../../public/maslow.png');
+  background-size: cover; 
+  background-position: center; /* Center the image */
+
+}
+
+
 .main-cover { 
-  width: 360px;
+  width: 100%;
   height: 100vh;
   display: flex;
   margin: 0 auto;
@@ -17,21 +25,20 @@ body {
 }
 
 .start-button {
-  width: 40%;
-  height: 10%;
-
-  background-color: black;
+  width: 60%;
+  height: 8%;
+  background-color: #724a94;
   border-radius: 10px;
-  margin: 0 auto;
-
   position: absolute;
+  color: white;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
   bottom: 20%;
+  justify-content: center;
+  transition: all 0.1s;
 }
-@media (min-width: 768px) { /* Adjust min-width as needed */
-  .main-cover {
-    width: 30%;
-  }
-}
+
 
 .progress-bar {
   width: 80%;
@@ -39,10 +46,8 @@ body {
   background-color:rgb(255, 255, 255);
   border: 1px solid rgb(0, 0, 0);
   margin: 70px auto;
-  /* overflow: hidden; */
   display: flex;
   align-items: center;
-
   position: relative;
   
 }
@@ -64,7 +69,7 @@ body {
   text-align: center;
   position: absolute;
   top: 30%;
-  font-size: 25px;
+  font-size: 17px;
   color: rgb(0, 0, 0);
 }
 
@@ -73,7 +78,7 @@ body {
   height: 23%;
   position: absolute;
   bottom: 20px;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,17 +86,98 @@ body {
 }
 
 .button {
-  width: 80%;
-  height: 40%;
+  width: 70%;
+  height: 35%;
   background-color: rgb(67, 67, 67);
   border-radius: 10px;
   margin: 10px 0;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
 
   color: white;
-  font-size: 25px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
 }
 
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.result-wrapper {
+  width: 100%;
+  height: 60%;
+  margin-top: 15%;
+  
+  background-color: antiquewhite;
+}
+@media (min-width: 768px) { /* Adjust min-width as needed */
+  .main-cover {
+    width: 30%;
+  }
+
+  .start-button {
+    font-size: 20px;
+  }
+  .button {
+    font-size: 20px;
+  }
+
+  .question-container { 
+    font-size: 20px;
+  }
+
+  .start-button:hover {
+    background-color: #452c5c;
+  }
+
+  .button:hover{
+    background-color: rgb(49, 49, 49);
+  }
+  
+  .maslow {
+    background-image: url('../../public/maslow.png');
+    /* background-color: red; */
+  }
+}
+
+.loading-text {
+  font-size: 20px;
+  color: rgb(75, 75, 75);
+  font-weight: 600;
+}
+
+.loading {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  border-radius: 33px;
+  background-size: cover; 
+
+  animation: spin 3s linear infinite; 
+  background-image: url('../../public/img.png');
+}
+
+.loding-container {
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 50% auto;
+  width: 90%;
+  height: 40%;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* End at 360 degrees (full rotation) */
+  }
+}

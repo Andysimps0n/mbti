@@ -1,33 +1,57 @@
 "use client"
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Loding from '../Loding'
 
 function page() {
 
+  useEffect(()=>{
+    if (currentQuestionNumber > 9) {
+      // router.push('/loading')
+    }
+  })
+
+  const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
   const router = useRouter()
-  const handleBottomClick = () => {
-    setcurrentQuestionNumber(currentQuestionNumber + 1)
+  
+  const handleTopClick = () => {
+    if (currentQuestionNumber < 10) {
+      needs[needsIndexToKey[currentQuestionNumber]] += 1
+      setcurrentQuestionNumber(currentQuestionNumber + 1)
+      console.log(currentQuestionNumber)
+    }
   }
 
-  const handleTopClick = () => {
-    setcurrentQuestionNumber(currentQuestionNumber + 1)
+  const handleBottomClick = () => {
+    if (currentQuestionNumber < 10) {
+      needs[needsIndexToKey[currentQuestionNumber]] -= 1
+      setcurrentQuestionNumber(currentQuestionNumber + 1)
+    }
   }
-  const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
-  if (currentQuestionNumber == 9) {
-    router.push('/result')
-  }
+
+
+
+  let needs = {
+    physical : 0,
+    safety : 0,
+    love : 0,
+    selfEsteem : 0,
+    selfActualization : 0
+  };
+
+  const needsIndexToKey = ["physical", "safety", "love", "selfEsteem", "selfActualization"]
 
 
   const questions = [
     {
-      question: "당신은 PT를 받는 사람입니다. \n \n 트레이너가 나의 식단을 물었을 때 나는",
-      option: ["들고있던 치킨을 숨긴다", "당당히 걸어간다"]
+      question: "당신은 PT를 받는 사람입니다. 길에서 만난   트레이너가 나의 식단을 물었을 때 나는",
+      option: ["당당히 걸어간다", "들고있던 치킨을 숨긴다"]
     },
     {
       question: "피곤한 월요일 아침, 당신의 눈 앞에 빈백이 보입니다.",
-      option: ["묻지도 따지지도 않고 눕는다", "다음 수업을 준비하기 위해 지나친다"]
+      option: ["다음 수업을 준비하기 위해 지나친다", "묻지도 따지지도 않고 눕는다"]
     },
     {
       question: "학교에서 최저 시급 받으며 1주일 살기 (밥 무한 인터넷 무한)",
@@ -47,11 +71,11 @@ function page() {
     },
     {
       question: "모둠 과제를 하면서 당신이 의견을 제시할 때 모둠원의 반응은",
-      option: ["별 말 아니겠지 하면서 무시한다", "자신의 말을 경청해준다"]
+      option: ["자신의 말을 경청해준다", "별 말 아니겠지 하면서 무시한다"]
     },
     {
       question: "발표에서 대본 숙지를 못해 점수를 잘 못 받은 당신, 자신에게 할 말은?",
-      option: ["너는 잘 하는게 없어", "다음 발표에서는 대본 숙지를 잘 해야겠다. 그래도 수고했어."]
+      option: ["다음 발표에서는 대본 숙지를 잘 해야겠다", "너는 잘 하는게 없어"]
     },
     {
       question: "나는 내 삶의 목표와 방향을 분명히 이해하고 있나요?",
@@ -66,16 +90,27 @@ function page() {
 
   return (
     <div className="main-cover border">
+        {currentQuestionNumber <= 9 ?
       <div className="progress-bar">
-        <div className="progress-shower" style={{width : `${10 * currentQuestionNumber}%`}}></div>
+          <div className="progress-shower" style={{width : `${10 * currentQuestionNumber}%`}}></div>
       </div>
+         : null}
 
+      {currentQuestionNumber <= 9 ?
+      <>
       <div className="question-container">{questions[currentQuestionNumber].question}</div>
 
       <div className="button-container">
         <div className="button" onClick={()=>{handleTopClick()}}>{questions[currentQuestionNumber].option[0]}</div>
         <div className="button" onClick={()=>{handleBottomClick()}}>{questions[currentQuestionNumber].option[1]}</div>
       </div>
+      </>
+    : null}
+
+    {currentQuestionNumber <= 9 ? null : 
+      <Loding></Loding>
+    }
+
 
     </div>
   )
