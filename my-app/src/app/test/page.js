@@ -7,41 +7,48 @@ import Loding from '../Loding'
 
 function page() {
 
-  useEffect(()=>{
-    if (currentQuestionNumber > 9) {
-      // router.push('/loading')
-    }
-  })
 
   const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
-  const router = useRouter()
-  
-  const handleTopClick = () => {
-    if (currentQuestionNumber < 10) {
-      needs[needsIndexToKey[currentQuestionNumber]] += 1
-      setcurrentQuestionNumber(currentQuestionNumber + 1)
-      console.log(currentQuestionNumber)
-    }
-  }
+  const [testObj, settestObj] = useState({
+    a : 1,
+    b : 2,
+    c : 3
+  })
 
-  const handleBottomClick = () => {
-    if (currentQuestionNumber < 10) {
-      needs[needsIndexToKey[currentQuestionNumber]] -= 1
-      setcurrentQuestionNumber(currentQuestionNumber + 1)
-    }
-  }
-
-
-
-  let needs = {
+  const [needs, setneeds] = useState({
     physical : 0,
     safety : 0,
     love : 0,
     selfEsteem : 0,
     selfActualization : 0
-  };
+  });
 
-  const needsIndexToKey = ["physical", "safety", "love", "selfEsteem", "selfActualization"]
+  const router = useRouter()
+  
+  const handleButtonClick = (location) => {
+    if (currentQuestionNumber < 10) {
+
+      const addingNumber = location == 'top' ? 1 : -1
+
+      const rangeToKey = {
+        physical: [0, 1],
+        safety: [2, 3],
+        love: [4, 5],
+        selfEsteem: [6, 7],
+        selfActualization: [8, 9]
+      };      
+
+      // Returns need that the question if about
+      const key = Object.keys(rangeToKey).find((k)=>rangeToKey[k].includes(currentQuestionNumber))
+
+      if (key) { setneeds( (prev)=>({
+        ...prev,
+        [key]: prev[key] + addingNumber
+      })) }
+      setcurrentQuestionNumber((prevState) => prevState + 1)
+    }
+  }
+
 
 
   const questions = [
@@ -101,14 +108,14 @@ function page() {
       <div className="question-container">{questions[currentQuestionNumber].question}</div>
 
       <div className="button-container">
-        <div className="button" onClick={()=>{handleTopClick()}}>{questions[currentQuestionNumber].option[0]}</div>
-        <div className="button" onClick={()=>{handleBottomClick()}}>{questions[currentQuestionNumber].option[1]}</div>
+        <div className="button" onClick={()=>{handleButtonClick('top')}}>{questions[currentQuestionNumber].option[0]}</div>
+        <div className="button" onClick={()=>{handleButtonClick('bottom')}}>{questions[currentQuestionNumber].option[1]}</div>
       </div>
       </>
     : null}
 
     {currentQuestionNumber <= 9 ? null : 
-      <Loding></Loding>
+      <Loding needs={needs}></Loding>
     }
 
 

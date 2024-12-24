@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  user-select: none;
+  /* user-select: none; */
 }
 
 .maslow {
@@ -112,37 +112,9 @@ body {
   width: 100%;
   height: 60%;
   margin-top: 15%;
-  
-  background-color: antiquewhite;
-}
-@media (min-width: 768px) { /* Adjust min-width as needed */
-  .main-cover {
-    width: 30%;
-  }
-
-  .start-button {
-    font-size: 20px;
-  }
-  .button {
-    font-size: 20px;
-  }
-
-  .question-container { 
-    font-size: 20px;
-  }
-
-  .start-button:hover {
-    background-color: #452c5c;
-  }
-
-  .button:hover{
-    background-color: rgb(49, 49, 49);
-  }
-  
-  .maslow {
-    background-image: url('../../public/maslow.png');
-    /* background-color: red; */
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .loading-text {
@@ -166,13 +138,53 @@ body {
 
   display: flex;
   align-items: center;
-
+  
   justify-content: space-between;
   flex-direction: column;
   margin: 50% auto;
   width: 90%;
   height: 40%;
 }
+
+.resultbar-wrapper {
+  width: 100%;
+  height: 60%;
+  
+  display: flex;
+  flex-direction: row;
+  align-items:end;
+  justify-content: space-evenly;
+}
+
+.resultbar {
+  width: 9%;
+  height: 10%;
+  background-color: rgb(61, 61, 61);
+}
+
+.result-title {
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.tags-wrapper {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.tag {
+  width: 19%;
+  font-size: 13px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg); /* Start at 0 degrees */
@@ -181,3 +193,36 @@ body {
     transform: rotate(360deg); /* End at 360 degrees (full rotation) */
   }
 }
+  @media (min-width: 768px) { /* Adjust min-width as needed */
+    .main-cover {
+      width: 30%;
+    }
+  
+    .start-button {
+      font-size: 20px;
+    }
+    .button {
+      font-size: 20px;
+    }
+  
+    .question-container { 
+      font-size: 20px;
+    }
+  
+    .start-button:hover {
+      background-color: #452c5c;
+    }
+  
+    .button:hover{
+      background-color: rgb(49, 49, 49);
+    }
+    
+    .maslow {
+      background-image: url('../../public/maslow.png');
+      /* background-color: red; */
+    }
+  
+    .tag {
+      font-size: 15px
+    }
+  }
