@@ -26,7 +26,7 @@ function Page() {
         <div className="result-wrapper">
           <div className="result-title">매슬로우의 욕구 충족 단계</div>
           <div className="resultbar-wrapper border">
-            {needs.physical && needs? 
+            {needs? 
             <>
               <div style={{height : `${10 + Number(needs.physical) * 40}%`}} className="resultbar"></div>
               <div style={{height : `${10 + Number(needs.safety) * 40}%`}} className="resultbar"></div>
