@@ -22,33 +22,37 @@ function Page() {
   }, [needs]); // Runs when `needs` changes
 
   return (
-    <Suspense fallback={<Loding></Loding>}>
-    <div className='main-cover border'>
-      <div className="result-wrapper">
-        <div className="result-title">매슬로우의 욕구 충족 단계</div>
-        <div className="resultbar-wrapper border">
-          {needs.physical && needs? 
-          <>
-            <div style={{height : `${10 + Number(needs.physical) * 40}%`}} className="resultbar"></div>
-            <div style={{height : `${10 + Number(needs.safety) * 40}%`}} className="resultbar"></div>
-            <div style={{height : `${10 + Number(needs.love) * 40}%`}} className="resultbar"></div>
-            <div style={{height : `${10 + Number(needs.selfEsteem) * 40}%`}} className="resultbar"></div>
-            <div style={{height : `${10 + Number(needs.selfActualization) * 40}%`}} className="resultbar"></div>
-          </>
-        : null}
+      <div className='main-cover border'>
+        <div className="result-wrapper">
+          <div className="result-title">매슬로우의 욕구 충족 단계</div>
+          <div className="resultbar-wrapper border">
+            {needs.physical && needs? 
+            <>
+              <div style={{height : `${10 + Number(needs.physical) * 40}%`}} className="resultbar"></div>
+              <div style={{height : `${10 + Number(needs.safety) * 40}%`}} className="resultbar"></div>
+              <div style={{height : `${10 + Number(needs.love) * 40}%`}} className="resultbar"></div>
+              <div style={{height : `${10 + Number(needs.selfEsteem) * 40}%`}} className="resultbar"></div>
+              <div style={{height : `${10 + Number(needs.selfActualization) * 40}%`}} className="resultbar"></div>
+            </>
+          : null}
+            </div>
+          <div className="tags-wrapper">
+            <div className="border tag">생리적 욕구</div>
+            <div className="border tag">안전 욕구</div>
+            <div className="border tag">소속 욕구</div>
+            <div className="border tag">존경 욕구</div>
+            <div className="border tag">자아실현 욕구</div>
           </div>
-        <div className="tags-wrapper">
-          <div className="border tag">생리적 욕구</div>
-          <div className="border tag">안전 욕구</div>
-          <div className="border tag">소속 욕구</div>
-          <div className="border tag">존경 욕구</div>
-          <div className="border tag">자아실현 욕구</div>
         </div>
       </div>
-    </div>
-    </Suspense>
 
   )
 }
 
-export default Page
+export function PageComponent () {
+  return (
+    <Suspense fallback={<Loding></Loding>}>
+      <Page></Page>
+    </Suspense>
+  )
+}
