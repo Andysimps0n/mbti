@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Loding from '../Loding'
 
-function page() {
+function Page() {
 
 
   const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
@@ -118,4 +118,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

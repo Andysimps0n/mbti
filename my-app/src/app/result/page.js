@@ -4,7 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import React from 'react'
 
 
-function page() {
+function Page() {
 
   const [needs, setNeeds] = useState({});
   const searchParams = useSearchParams();
@@ -48,4 +48,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
