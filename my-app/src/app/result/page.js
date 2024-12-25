@@ -28,11 +28,11 @@ function Page() {
         <div className="resultbar-wrapper border">
           {needs.physical && needs? 
           <>
-            <div style={{height : 60 + Number(needs.physical) * 60}} className="resultbar"></div>
-            <div style={{height : 60 + Number(needs.safety) * 60}} className="resultbar"></div>
-            <div style={{height : 60 + Number(needs.love) * 60}} className="resultbar"></div>
-            <div style={{height : 60 + Number(needs.selfEsteem) * 60}} className="resultbar"></div>
-            <div style={{height : 60 + Number(needs.selfActualization) * 60}} className="resultbar"></div>
+            <div style={{height : `${10 + Number(needs.physical) * 40}%`}} className="resultbar"></div>
+            <div style={{height : `${10 + Number(needs.safety) * 40}%`}} className="resultbar"></div>
+            <div style={{height : `${10 + Number(needs.love) * 40}%`}} className="resultbar"></div>
+            <div style={{height : `${10 + Number(needs.selfEsteem) * 40}%`}} className="resultbar"></div>
+            <div style={{height : `${10 + Number(needs.selfActualization) * 40}%`}} className="resultbar"></div>
           </>
         : null}
           </div>
