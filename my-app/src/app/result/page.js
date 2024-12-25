@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import React from 'react'
-
+import Loding from '../Loding'
 
 function Page() {
 
@@ -22,6 +22,7 @@ function Page() {
   }, [needs]); // Runs when `needs` changes
 
   return (
+    <Suspense fallback={<Loding></Loding>}>
     <div className='main-cover border'>
       <div className="result-wrapper">
         <div className="result-title">매슬로우의 욕구 충족 단계</div>
@@ -45,6 +46,8 @@ function Page() {
         </div>
       </div>
     </div>
+    </Suspense>
+
   )
 }
 
