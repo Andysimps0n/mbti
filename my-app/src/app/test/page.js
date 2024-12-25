@@ -9,18 +9,13 @@ function page() {
 
 
   const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
-  const [testObj, settestObj] = useState({
-    a : 1,
-    b : 2,
-    c : 3
-  })
 
   const [needs, setneeds] = useState({
-    physical : 0,
-    safety : 0,
-    love : 0,
-    selfEsteem : 0,
-    selfActualization : 0
+    physical : 2,
+    safety : 2,
+    love : 2,
+    selfEsteem : 2,
+    selfActualization : 2
   });
 
   const router = useRouter()
@@ -28,7 +23,7 @@ function page() {
   const handleButtonClick = (location) => {
     if (currentQuestionNumber < 10) {
 
-      const addingNumber = location == 'top' ? 1 : -1
+      const addingNumber = location == 'top' ? 0 : -1
 
       const rangeToKey = {
         physical: [0, 1],

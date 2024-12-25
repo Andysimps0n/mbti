@@ -17,6 +17,8 @@ function page() {
 
   useEffect(() => {
     console.log(needs); // Logs the updated state
+    console.log(Number(needs.physical));
+    
   }, [needs]); // Runs when `needs` changes
 
   return (
@@ -24,12 +26,16 @@ function page() {
       <div className="result-wrapper">
         <div className="result-title">매슬로우의 욕구 충족 단계</div>
         <div className="resultbar-wrapper border">
-          <div style={{height : `${needs.physical * 46}%`}} className="resultbar"></div>
-          <div style={{height : `${needs.safety * 46}%`}} className="resultbar"></div>
-          <div style={{height : `${needs.love * 46}%`}} className="resultbar"></div>
-          <div style={{height : `${needs.selfEsteem * 46}%`}} className="resultbar"></div>
-          <div style={{height : `${needs.selfActualization * 46}%`}} className="resultbar"></div>
-        </div>
+          {needs.physical && needs? 
+          <>
+            <div style={{height : 60 + Number(needs.physical) * 60}} className="resultbar"></div>
+            <div style={{height : 60 + Number(needs.safety) * 60}} className="resultbar"></div>
+            <div style={{height : 60 + Number(needs.love) * 60}} className="resultbar"></div>
+            <div style={{height : 60 + Number(needs.selfEsteem) * 60}} className="resultbar"></div>
+            <div style={{height : 60 + Number(needs.selfActualization) * 60}} className="resultbar"></div>
+          </>
+        : null}
+          </div>
         <div className="tags-wrapper">
           <div className="border tag">생리적 욕구</div>
           <div className="border tag">안전 욕구</div>
