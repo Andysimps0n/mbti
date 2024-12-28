@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import Page from './page';
 import Loding from './Loding'
 
-export default function layout({ children }) {
+export default function Layout({ children }) {
 
     const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
     const [needs, setneeds] = useState({
