@@ -1,10 +1,10 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import React from 'react'
 
 
-export default function Page() {
+export function Content() {
 
   const [needs, setNeeds] = useState({});
   const searchParams = useSearchParams();
@@ -39,5 +39,14 @@ export default function Page() {
         </div>
       </div>
     </div>
+  )
+}
+
+
+export default function Page() {
+  return (
+    <Suspense>
+      <Content></Content>
+    </Suspense>
   )
 }
