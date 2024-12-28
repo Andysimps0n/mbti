@@ -1,29 +1,14 @@
-'use client'
+"use client"
 
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import React from 'react'
 import Loding from '../Loding'
 
-function Page() {
+function Page({currentQuestionNumber, setcurrentQuestionNumber, needs, setneeds}) {
 
-
-  const [currentQuestionNumber, setcurrentQuestionNumber] = useState(0);
-
-  const [needs, setneeds] = useState({
-    physical : 2,
-    safety : 2,
-    love : 2,
-    selfEsteem : 2,
-    selfActualization : 2
-  });
-
-  const router = useRouter()
-  
   const handleButtonClick = (location) => {
     if (currentQuestionNumber < 10) {
 
-      const addingNumber = location == 'top' ? 0 : -1
+      const addingNumber = location == 'top' ? 1 : -1
 
       const rangeToKey = {
         physical: [0, 1],
@@ -91,30 +76,15 @@ function Page() {
   
 
   return (
-    <div className="main-cover border">
-        {currentQuestionNumber <= 9 ?
-      <div className="progress-bar">
-          <div className="progress-shower" style={{width : `${10 * currentQuestionNumber}%`}}></div>
-      </div>
-         : null}
-
-      {currentQuestionNumber <= 9 ?
-      <>
+    <>
       <div className="question-container">{questions[currentQuestionNumber].question}</div>
 
       <div className="button-container">
         <div className="button" onClick={()=>{handleButtonClick('top')}}>{questions[currentQuestionNumber].option[0]}</div>
         <div className="button" onClick={()=>{handleButtonClick('bottom')}}>{questions[currentQuestionNumber].option[1]}</div>
       </div>
-      </>
-    : null}
-
-    {currentQuestionNumber <= 9 ? null : 
-      <Loding needs={needs}></Loding>
-    }
-
-
-    </div>
+    
+    </>
   )
 }
 
